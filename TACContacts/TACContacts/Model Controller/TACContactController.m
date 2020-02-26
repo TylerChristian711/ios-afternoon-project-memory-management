@@ -20,37 +20,40 @@
 -(instancetype) init {
     self = [super init];
     if (self) {
-        _contacts = [_internalContacts copy];
+        _internalContacts = [[NSMutableArray alloc] init];
         
         [self.internalContacts addObject:[TACContact contactWithName:@"Tyler" email:@"tylerc71197@gmail.com" phone:@"5612713134"]];
-        [self.internalContacts addObject:[TACContact contactWithName:@"Troy" email:@"Troyc71197@gmail.com" phone:@"5612715140"]];
-        [self.internalContacts addObject:[TACContact contactWithName:@"Mark" email:@"Markc71197@gmail.com" phone:@"5612753240"]];
+        [self.internalContacts addObject:[TACContact contactWithName:@"Troy" email:@"Troyc61695@gmail.com" phone:@"5612715140"]];
+        [self.internalContacts addObject:[TACContact contactWithName:@"Mark" email:@"Markc81060@gmail.com" phone:@"5612753240"]];
     }
     return self;
+}
+
+- (NSArray *)contacts {
+    return [[_internalContacts copy] autorelease];
 }
 
 
 - (void)addContact:(TACContact *)contact {
     [self.internalContacts addObject:contact];
-    [contact release];
 }
 
--(void)updateContact:(TACContact *)contact {
-    NSUInteger index = [self.internalContacts indexOfObject:contact];
-    self.internalContacts[index] = contact;
-    [contact release];
+-(void)updateContact:(TACContact *)contact
+            withName:(NSString *)name
+               email:(NSString *)emial
+               phone:(NSString *)phone {
+    contact.name = name;
+    contact.email = emial;
+    contact.phone = phone;
+    
 }
 
 -(void)removeContact:(TACContact *)contact {
-    NSUInteger index = [self.internalContacts indexOfObject:contact];
-    [self.internalContacts removeObjectAtIndex:index];
-    [contact release];
+    [self.internalContacts removeObject:contact];
+    
 }
 
 -(void) dealloc {
-    [_contacts release];
-    _contacts = nil;
-    
     [_internalContacts release];
     _internalContacts = nil;
     

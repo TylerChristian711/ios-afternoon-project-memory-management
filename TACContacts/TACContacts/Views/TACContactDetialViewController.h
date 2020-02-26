@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TACContact.h"
+#import "TACContactController.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface TACContactDetialViewController : UIViewController
 
+@property (nonatomic, retain) TACContact *contact;
+@property (nonatomic,retain) TACContactController *contactsController;
+
 @end
 
-NS_ASSUME_NONNULL_END
+

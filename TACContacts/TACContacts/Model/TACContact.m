@@ -23,19 +23,13 @@
 +(instancetype) contactWithName:(NSString *)name email:(NSString *)email phone:(NSString *)phone {
     return [[[TACContact alloc] initWithName:name email:email phone:phone] autorelease];
 }
-
 -(void) dealloc {
     [_name release];
     _name = nil;
-    
     [_email release];
     _email = nil;
-    
     [_phone release];
     _phone = nil;
-    
     [super dealloc];
 }
-
-
 @end
